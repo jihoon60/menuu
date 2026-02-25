@@ -45,8 +45,6 @@
     pointer-events: none; z-index: 0;
   }
 
-
-
   /* HEADER */
   header {
     display: flex;
@@ -63,10 +61,8 @@
   }
   .logo span { color: var(--accent); }
 
-  .progress-track {
-    display: flex;
-    align-items: center;
-  }
+  .progress-track { display: flex; align-items: center; }
+
   .prog-step {
     display: flex;
     align-items: center;
@@ -171,7 +167,6 @@
 
   .card-emoji { font-size: 3.2rem; position: relative; z-index: 1; }
   .card-name { font-family: 'Black Han Sans', sans-serif; font-size: 1.5rem; position: relative; z-index: 1; }
-  .card-desc { font-size: 0.8rem; color: var(--sub); text-align: center; line-height: 1.6; position: relative; z-index: 1; }
 
   /* CARDS 2 */
   .cards-2 {
@@ -185,9 +180,8 @@
   .cards-2 .card { padding: 56px 32px 48px; }
   .cards-2 .card-emoji { font-size: 4rem; }
   .cards-2 .card-name { font-size: 1.7rem; }
-  .cards-2 .card-desc { font-size: 0.88rem; }
 
-  /* STEP 3 layout */
+  /* STEP 3 */
   .step-roulette {
     display: flex;
     flex-direction: column;
@@ -222,7 +216,6 @@
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
     border-top: 34px solid var(--accent);
-    filter: drop-shadow(0 4px 10px rgba(255,107,53,0.7));
     z-index: 10;
   }
 
@@ -238,12 +231,11 @@
     transition: opacity 0.2s;
   }
   .spin-btn:hover { opacity: 0.85; }
-  .spin-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  .spin-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-  /* RIGHT PANEL */
   .result-col { display: none; }
 
-  .action-row { display: flex; gap: 12px; margin-top: 4px; }
+  .action-row { display: flex; gap: 12px; }
 
   .again-btn {
     background: var(--surface2);
@@ -273,73 +265,7 @@
   }
   .restart-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 
-  /* ── TABLET (768px ~ 1024px) ── */
-  @media (max-width: 1024px) {
-    header { padding: 14px 32px 12px; }
-    .breadcrumb-bar { min-width: 160px; }
-    main { padding: 0 32px; }
-
-    .cards-4 { max-width: 680px; gap: 14px; }
-    .card { padding: 32px 16px 26px; border-radius: 20px; gap: 10px; }
-    .card-emoji { font-size: 2.4rem; }
-    .card-name { font-size: 1.2rem; }
-
-    .cards-2 { max-width: 560px; gap: 16px; }
-    .cards-2 .card { padding: 40px 24px 36px; }
-    .cards-2 .card-emoji { font-size: 3rem; }
-    .cards-2 .card-name { font-size: 1.4rem; }
-
-    .canvas-wrap { width: min(50vh, 55vw); height: min(50vh, 55vw); }
-    .step-question { font-size: clamp(1.5rem, 2.5vw, 2.2rem); margin-bottom: 32px; }
-  }
-
-  /* ── MOBILE (~ 767px) ── */
-  @media (max-width: 767px) {
-    header { padding: 12px 20px 10px; }
-
-    /* 헤더: 로고만, progress는 숨기고 breadcrumb 우측 */
-    .progress-track { display: none; }
-    .breadcrumb-bar { min-width: unset; }
-    .logo { font-size: 1.2rem; }
-
-    main { padding: 0 16px; }
-
-    .step-question { font-size: 1.5rem; margin-bottom: 24px; }
-
-    /* 카드 4개: 2x2 그리드 */
-    .cards-4 {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      max-width: 100%;
-    }
-    .card { padding: 28px 12px 22px; border-radius: 18px; gap: 8px; }
-    .card-emoji { font-size: 2rem; }
-    .card-name { font-size: 1.1rem; }
-
-    /* 카드 2개 */
-    .cards-2 { gap: 12px; max-width: 100%; }
-    .cards-2 .card { padding: 32px 20px 28px; }
-    .cards-2 .card-emoji { font-size: 2.6rem; }
-    .cards-2 .card-name { font-size: 1.3rem; }
-
-    /* 룰렛 */
-    .canvas-wrap { width: min(72vw, 52vh); height: min(72vw, 52vh); }
-    .roulette-col { gap: 16px; }
-
-    .spin-btn { padding: 12px 40px; font-size: 1.1rem; }
-    .again-btn, .restart-btn { padding: 10px 18px; font-size: 0.8rem; }
-
-    /* 모달 */
-    .modal-box { font-size: 1.5rem; padding: 28px 36px; }
-  }
-
-  /* ── SMALL MOBILE (~ 390px) ── */
-  @media (max-width: 390px) {
-    .step-question { font-size: 1.3rem; }
-    .card-emoji { font-size: 1.7rem; }
-    .card-name { font-size: 1rem; }
-    .canvas-wrap { width: 78vw; height: 78vw; }
-  }
+  /* MODAL */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -354,9 +280,7 @@
     transition: opacity 0.3s ease;
     z-index: 100;
   }
-  .modal-overlay.show {
-    opacity: 1;
-  }
+  .modal-overlay.show { opacity: 1; }
   .modal-box {
     background: #1c1c1c;
     border: 1px solid rgba(255,255,255,0.1);
@@ -368,8 +292,54 @@
     transform: scale(0.9);
     transition: transform 0.3s ease;
   }
-  .modal-overlay.show .modal-box {
-    transform: scale(1);
+  .modal-overlay.show .modal-box { transform: scale(1); }
+
+  /* ── TABLET ── */
+  @media (max-width: 1024px) {
+    header { padding: 14px 32px 12px; }
+    .breadcrumb-bar { min-width: 160px; }
+    main { padding: 0 32px; }
+    .cards-4 { max-width: 680px; gap: 14px; }
+    .card { padding: 32px 16px 26px; border-radius: 20px; gap: 10px; }
+    .card-emoji { font-size: 2.4rem; }
+    .card-name { font-size: 1.2rem; }
+    .cards-2 { max-width: 560px; gap: 16px; }
+    .cards-2 .card { padding: 40px 24px 36px; }
+    .cards-2 .card-emoji { font-size: 3rem; }
+    .cards-2 .card-name { font-size: 1.4rem; }
+    .canvas-wrap { width: min(50vh, 55vw); height: min(50vh, 55vw); }
+    .step-question { font-size: clamp(1.5rem, 2.5vw, 2.2rem); margin-bottom: 32px; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 767px) {
+    header { padding: 12px 20px 10px; }
+    .progress-track { display: none; }
+    .breadcrumb-bar { min-width: unset; }
+    .logo { font-size: 1.2rem; }
+    main { padding: 0 16px; }
+    .step-question { font-size: 1.4rem; margin-bottom: 20px; }
+    .cards-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 100%; }
+    .card { padding: 28px 12px 22px; border-radius: 18px; gap: 8px; }
+    .card-emoji { font-size: 2rem; }
+    .card-name { font-size: 1.1rem; }
+    .cards-2 { gap: 12px; max-width: 100%; }
+    .cards-2 .card { padding: 32px 20px 28px; }
+    .cards-2 .card-emoji { font-size: 2.6rem; }
+    .cards-2 .card-name { font-size: 1.3rem; }
+    .canvas-wrap { width: min(70vw, 50vh); height: min(70vw, 50vh); }
+    .roulette-col { gap: 16px; }
+    .spin-btn { padding: 12px 40px; font-size: 1.1rem; }
+    .again-btn, .restart-btn { padding: 10px 18px; font-size: 0.8rem; }
+    .modal-box { font-size: 1.5rem; padding: 28px 36px; }
+  }
+
+  /* ── SMALL MOBILE ── */
+  @media (max-width: 390px) {
+    .step-question { font-size: 1.2rem; }
+    .card-emoji { font-size: 1.7rem; }
+    .card-name { font-size: 0.95rem; }
+    .canvas-wrap { width: 76vw; height: 76vw; }
   }
 </style>
 </head>
@@ -378,7 +348,6 @@
 
   <header>
     <div class="logo">오늘 <span>뭐</span> 시킬까?</div>
-
     <div class="progress-track">
       <div class="prog-step active" id="prog1"><span class="num">1</span> 종류 선택</div>
       <div class="prog-divider"></div>
@@ -386,7 +355,6 @@
       <div class="prog-divider"></div>
       <div class="prog-step" id="prog3"><span class="num">3</span> 룰렛</div>
     </div>
-
     <div class="breadcrumb-bar" id="breadcrumb"></div>
   </header>
 
@@ -433,7 +401,6 @@
     <!-- STEP 3 -->
     <div class="step" id="step3">
       <div class="step-roulette">
-
         <div class="roulette-col">
           <div class="canvas-wrap">
             <div class="pointer"></div>
@@ -445,9 +412,7 @@
             <button class="restart-btn" onclick="restart()">↩ 처음부터</button>
           </div>
         </div>
-
         <div class="result-col"></div>
-
       </div>
     </div>
 
@@ -462,95 +427,95 @@
 const menus = {
   한식: {
     spicy: [
-      {name:'떡볶이',    emoji:'🍢'},
-      {name:'마라탕',    emoji:'🌶️'},
-      {name:'닭발',      emoji:'🦶'},
-      {name:'제육볶음',  emoji:'🥩'},
-      {name:'매운 찜닭', emoji:'🔥'},
-      {name:'양념치킨',  emoji:'🍗'},
-      {name:'닭강정',    emoji:'🍗'},
-      {name:'낙곱새',    emoji:'🦑'},
-      {name:'김치찜',    emoji:'🫕'},
-      {name:'김치볶음밥',emoji:'🍳'},
-      {name:'비빔냉면',  emoji:'🍜'},
-      {name:'닭갈비',    emoji:'🍗'},
-      {name:'곱도리탕',  emoji:'🥘'},
+      {name:'떡볶이',     emoji:'🍢'},
+      {name:'마라탕',     emoji:'🌶️'},
+      {name:'닭발',       emoji:'🦶'},
+      {name:'제육볶음',   emoji:'🥩'},
+      {name:'매운 찜닭',  emoji:'🔥'},
+      {name:'양념치킨',   emoji:'🍗'},
+      {name:'닭강정',     emoji:'🍗'},
+      {name:'낙곱새',     emoji:'🦑'},
+      {name:'김치찜',     emoji:'🫕'},
+      {name:'김치볶음밥', emoji:'🍳'},
+      {name:'비빔냉면',   emoji:'🍜'},
+      {name:'닭갈비',     emoji:'🍗'},
+      {name:'곱도리탕',   emoji:'🥘'},
     ],
     mild: [
-      {name:'보쌈',       emoji:'🥬'},
-      {name:'족발',       emoji:'🍖'},
-      {name:'칼국수',     emoji:'🍜'},
-      {name:'간장 찜닭',  emoji:'🍗'},
-      {name:'닭강정',     emoji:'🍗'},
-      {name:'물냉면',     emoji:'🍜'},
-      {name:'국밥',       emoji:'🍲'},
-      {name:'수제비',     emoji:'🥣'},
-      {name:'국수',       emoji:'🍜'},
-      {name:'덮밥',       emoji:'🍚'},
-      {name:'죽',         emoji:'🥣'},
-      {name:'갈비찜',     emoji:'🥩'},
+      {name:'보쌈',      emoji:'🥬'},
+      {name:'족발',      emoji:'🍖'},
+      {name:'칼국수',    emoji:'🍜'},
+      {name:'간장 찜닭', emoji:'🍗'},
+      {name:'닭강정',    emoji:'🍗'},
+      {name:'물냉면',    emoji:'🍜'},
+      {name:'국밥',      emoji:'🍲'},
+      {name:'수제비',    emoji:'🥣'},
+      {name:'국수',      emoji:'🍜'},
+      {name:'덮밥',      emoji:'🍚'},
+      {name:'죽',        emoji:'🥣'},
+      {name:'갈비찜',    emoji:'🥩'},
     ]
   },
   일식: {
     spicy: [
-      {name:'탄탄멘',   emoji:'🍜'},
-      {name:'야끼우동', emoji:'🍜'},
-      {name:'매운 라멘',emoji:'🔥'},
+      {name:'탄탄멘',    emoji:'🍜'},
+      {name:'야끼우동',  emoji:'🍜'},
+      {name:'매운 라멘', emoji:'🔥'},
     ],
     mild: [
-      {name:'초밥',  emoji:'🍣'},
-      {name:'돈까스',emoji:'🍱'},
-      {name:'규동',  emoji:'🥩'},
-      {name:'우동',  emoji:'🍜'},
+      {name:'초밥',   emoji:'🍣'},
+      {name:'돈까스', emoji:'🍱'},
+      {name:'규동',   emoji:'🥩'},
+      {name:'우동',   emoji:'🍜'},
     ]
   },
   중식: {
     spicy: [
-      {name:'마라탕',    emoji:'🌶️'},
-      {name:'마라샹궈',  emoji:'🌶️'},
-      {name:'마라새우',  emoji:'🦐'},
-      {name:'짬뽕',      emoji:'🦐'},
-      {name:'훠궈',      emoji:'🔥'},
-      {name:'사천짜장',  emoji:'🍜'},
-      {name:'마파두부',  emoji:'🫕'},
-      {name:'사천볶음밥',emoji:'🍳'},
-      {name:'고추잡채',  emoji:'🥢'},
-      {name:'깐풍기',    emoji:'🍗'},
-      {name:'유린기',    emoji:'🍗'},
+      {name:'마라탕',     emoji:'🌶️'},
+      {name:'마라샹궈',   emoji:'🌶️'},
+      {name:'마라새우',   emoji:'🦐'},
+      {name:'짬뽕',       emoji:'🦐'},
+      {name:'훠궈',       emoji:'🔥'},
+      {name:'사천짜장',   emoji:'🍜'},
+      {name:'마파두부',   emoji:'🫕'},
+      {name:'사천볶음밥', emoji:'🍳'},
+      {name:'고추잡채',   emoji:'🥢'},
+      {name:'깐풍기',     emoji:'🍗'},
+      {name:'유린기',     emoji:'🍗'},
     ],
     mild: [
-      {name:'짜장면',  emoji:'🍜'},
-      {name:'간짜장',  emoji:'🍜'},
-      {name:'쟁반짜장',emoji:'🍜'},
-      {name:'볶음밥',  emoji:'🍳'},
-      {name:'잡채밥',  emoji:'🍚'},
-      {name:'기스면',  emoji:'🍜'},
-      {name:'탕수육',  emoji:'🥩'},
-      {name:'꿔바로우',emoji:'🥩'},
-      {name:'동파육',  emoji:'🥩'},
-      {name:'팔보채',  emoji:'🦐'},
-      {name:'양꼬치',  emoji:'🍢'},
+      {name:'짜장면',   emoji:'🍜'},
+      {name:'간짜장',   emoji:'🍜'},
+      {name:'쟁반짜장', emoji:'🍜'},
+      {name:'볶음밥',   emoji:'🍳'},
+      {name:'잡채밥',   emoji:'🍚'},
+      {name:'기스면',   emoji:'🍜'},
+      {name:'탕수육',   emoji:'🥩'},
+      {name:'꿔바로우', emoji:'🥩'},
+      {name:'동파육',   emoji:'🥩'},
+      {name:'팔보채',   emoji:'🦐'},
+      {name:'양꼬치',   emoji:'🍢'},
     ]
   },
   양식: {
     spicy: [
-      {name:'디아블로 파스타',emoji:'🍝'},
-      {name:'퀘사디아',      emoji:'🫓'},
-      {name:'매운 타코',     emoji:'🌮'},
-      {name:'매운 부리또',   emoji:'🌯'},
-      {name:'매운 햄버거',   emoji:'🍔'},
-      {name:'핫 버팔로윙',   emoji:'🍗'},
+      {name:'디아블로 파스타', emoji:'🍝'},
+      {name:'퀘사디아',       emoji:'🫓'},
+      {name:'매운 타코',      emoji:'🌮'},
+      {name:'매운 부리또',    emoji:'🌯'},
+      {name:'매운 햄버거',    emoji:'🍔'},
+      {name:'핫 버팔로윙',    emoji:'🍗'},
     ],
     mild: [
-      {name:'까르보나라 파스타',emoji:'🍝'},
-      {name:'크림 파스타',      emoji:'🍝'},
-      {name:'고르곤졸라 피자',  emoji:'🍕'},
-      {name:'포테이토 피자',    emoji:'🍕'},
-      {name:'스테이크',         emoji:'🥩'},
-      {name:'라자냐',           emoji:'🍝'},
-      {name:'그라탕',           emoji:'🫕'},
-      {name:'햄버거',           emoji:'🍔'},
-      {name:'치킨',             emoji:'🍗'},
+      {name:'까르보나라 파스타', emoji:'🍝'},
+      {name:'크림 파스타',       emoji:'🍝'},
+      {name:'고르곤졸라 피자',   emoji:'🍕'},
+      {name:'포테이토 피자',     emoji:'🍕'},
+      {name:'스테이크',          emoji:'🥩'},
+      {name:'라자냐',            emoji:'🍝'},
+      {name:'그라탕',            emoji:'🫕'},
+      {name:'햄버거',            emoji:'🍔'},
+      {name:'치킨',              emoji:'🍗'},
     ]
   }
 };
@@ -565,7 +530,7 @@ let selectedCuisine='', selectedEmoji='', selectedSpicy=false;
 let items=[], spinning=false, currentAngle=0;
 
 function setProgress(step) {
-  for (let i=1;i<=3;i++) {
+  for (let i=1; i<=3; i++) {
     const el = document.getElementById(`prog${i}`);
     el.classList.remove('active','done');
     if (i < step) el.classList.add('done');
@@ -596,7 +561,7 @@ function selectSpice(spicy) {
 
   document.getElementById('spinBtn').disabled = false;
   document.getElementById('actionRow').style.display = 'none';
-  hideToast();
+  hideModal();
   currentAngle = 0;
   setTimeout(() => drawRoulette(0), 50);
 }
@@ -605,6 +570,7 @@ function drawRoulette(rotation) {
   const canvas = document.getElementById('rouletteCanvas');
   const wrap = canvas.parentElement;
   const size = wrap.offsetWidth;
+  if (!size) return;
   canvas.width = size; canvas.height = size;
   const ctx = canvas.getContext('2d');
   const cx=size/2, cy=size/2, r=size/2-4;
@@ -632,10 +598,10 @@ function drawRoulette(rotation) {
 
 function spinRoulette() {
   if (spinning) return;
-  spinning=true;
-  document.getElementById('spinBtn').disabled=true;
-  document.getElementById('actionRow').style.display='none';
-  hideToast();
+  spinning = true;
+  document.getElementById('spinBtn').disabled = true;
+  document.getElementById('actionRow').style.display = 'none';
+  hideModal();
 
   const totalSpin = Math.PI*2*(9+Math.random()*7);
   const duration = 4200+Math.random()*1500;
@@ -653,20 +619,20 @@ function spinRoulette() {
   requestAnimationFrame(animate);
 }
 
-let toastTimer = null;
+let modalTimer = null;
 
-function showToast(text) {
+function showModal(text) {
   const overlay = document.getElementById('modalOverlay');
   const box = document.getElementById('modalBox');
   box.textContent = text;
   overlay.classList.add('show');
-  if (toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => hideToast(), 1000);
+  if (modalTimer) clearTimeout(modalTimer);
+  modalTimer = setTimeout(() => hideModal(), 1000);
 }
 
-function hideToast() {
+function hideModal() {
   document.getElementById('modalOverlay').classList.remove('show');
-  toastTimer = null;
+  if (modalTimer) { clearTimeout(modalTimer); modalTimer = null; }
 }
 
 function showResult(angle) {
@@ -676,19 +642,19 @@ function showResult(angle) {
   const picked = items[idx];
 
   setTimeout(() => {
-    showToast(picked.name);
-    document.getElementById('spinBtn').disabled=false;
-    document.getElementById('actionRow').style.display='flex';
+    showModal(picked.name);
+    document.getElementById('spinBtn').disabled = false;
+    document.getElementById('actionRow').style.display = 'flex';
   }, 200);
 }
 
 function restart() {
-  hideToast();
+  hideModal();
   document.getElementById('step2').classList.remove('active');
   document.getElementById('step3').classList.remove('active');
-  document.getElementById('actionRow').style.display='none';
-  document.getElementById('breadcrumb').innerHTML='';
-  currentAngle=0;
+  document.getElementById('actionRow').style.display = 'none';
+  document.getElementById('breadcrumb').innerHTML = '';
+  currentAngle = 0;
   document.getElementById('step1').classList.add('active');
   setProgress(1);
 }
