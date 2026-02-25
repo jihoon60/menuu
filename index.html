@@ -265,7 +265,45 @@
   }
   .restart-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 
-  /* MODAL */
+  /* BACK BUTTON */
+  .back-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--sub);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .back-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
+
+  .step-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 920px;
+    margin-bottom: 44px;
+  }
+  .step-header .step-question { margin-bottom: 0; }
+
+  @media (max-width: 1024px) {
+    .step-header { max-width: 680px; margin-bottom: 32px; }
+  }
+  @media (max-width: 767px) {
+    .step-header { max-width: 100%; margin-bottom: 20px; }
+    .back-btn { font-size: 0.78rem; padding: 6px 12px; }
+  }
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -385,7 +423,10 @@
 
     <!-- STEP 2 -->
     <div class="step step-center" id="step2">
-      <div class="step-question">매운 거 <span class="accent">좋아하세요?</span></div>
+      <div class="step-header">
+        <button class="back-btn" onclick="goBack(1)">← 뒤로</button>
+        <div class="step-question">매운 거 <span class="accent">좋아하세요?</span></div>
+      </div>
       <div class="cards-2">
         <div class="card" onclick="selectSpice(true)">
           <div class="card-emoji">🌶️</div>
@@ -409,7 +450,11 @@
           <button class="spin-btn" id="spinBtn" onclick="spinRoulette()">룰렛 돌리기</button>
           <div class="action-row" id="actionRow" style="display:none;">
             <button class="again-btn" id="againBtn" onclick="spinRoulette()">다시 돌리기</button>
-            <button class="restart-btn" onclick="restart()">처음부터</button>
+            <button class="restart-btn" onclick="goBack(2)">← 뒤로</button>
+            <button class="restart-btn" onclick="restart()">↩ 처음부터</button>
+          </div>
+          <div class="action-row" id="backRow">
+            <button class="restart-btn" onclick="goBack(2)">← 뒤로</button>
           </div>
         </div>
         <div class="result-col"></div>
@@ -561,6 +606,7 @@ function selectSpice(spicy) {
 
   document.getElementById('spinBtn').disabled = false;
   document.getElementById('actionRow').style.display = 'none';
+  document.getElementById('backRow').style.display = 'flex';
   hideModal();
   currentAngle = 0;
   setTimeout(() => drawRoulette(0), 50);
@@ -601,6 +647,7 @@ function spinRoulette() {
   spinning = true;
   document.getElementById('spinBtn').disabled = true;
   document.getElementById('actionRow').style.display = 'none';
+  document.getElementById('backRow').style.display = 'none';
   hideModal();
 
   const totalSpin = Math.PI*2*(9+Math.random()*7);
@@ -645,7 +692,30 @@ function showResult(angle) {
     showModal(picked.name);
     document.getElementById('spinBtn').disabled = false;
     document.getElementById('actionRow').style.display = 'flex';
+    document.getElementById('backRow').style.display = 'none';
   }, 200);
+}
+
+function goBack(toStep) {
+  hideModal();
+  if (spinning) return; // 돌아가는 중엔 뒤로가기 막기
+  spinning = false;
+
+  document.getElementById('step1').classList.remove('active');
+  document.getElementById('step2').classList.remove('active');
+  document.getElementById('step3').classList.remove('active');
+  document.getElementById('actionRow').style.display = 'none';
+  document.getElementById('backRow').style.display = 'flex';
+
+  if (toStep === 1) {
+    document.getElementById('step1').classList.add('active');
+    document.getElementById('breadcrumb').innerHTML = '';
+    setProgress(1);
+  } else if (toStep === 2) {
+    document.getElementById('step2').classList.add('active');
+    document.getElementById('breadcrumb').innerHTML = `<span class="crumb">${selectedEmoji} ${selectedCuisine}</span>`;
+    setProgress(2);
+  }
 }
 
 function restart() {
@@ -653,6 +723,7 @@ function restart() {
   document.getElementById('step2').classList.remove('active');
   document.getElementById('step3').classList.remove('active');
   document.getElementById('actionRow').style.display = 'none';
+  document.getElementById('backRow').style.display = 'none';
   document.getElementById('breadcrumb').innerHTML = '';
   currentAngle = 0;
   document.getElementById('step1').classList.add('active');
