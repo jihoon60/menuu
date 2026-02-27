@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>오늘 뭐 시킬까?</title>
+<meta property="og:title" content="오늘 뭐 시킬까?">
+<meta property="og:description" content="오늘 뭐 먹을지 모르겠다면? 룰렛으로 결정하세요!">
+<meta property="og:image" content="https://select-todays-menu.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://select-todays-menu.vercel.app">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://select-todays-menu.vercel.app/og-image.png">
 <script>
   (function() {
     const c = document.createElement('canvas');
@@ -496,7 +505,7 @@
           <button class="spin-btn" id="spinBtn" onclick="spinRoulette()">룰렛 돌리기</button>
           <div class="action-row" id="actionRow" style="display:none;">
             <button class="restart-btn" onclick="goBack(2)">← 뒤로</button>
-            <button class="restart-btn" onclick="restart()">처음부터</button>
+            <button class="restart-btn" onclick="restart()">↩ 처음부터</button>
           </div>
           <div class="action-row" id="backRow">
             <button class="restart-btn" onclick="goBack(2)">← 뒤로</button>
