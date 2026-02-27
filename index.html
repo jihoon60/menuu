@@ -46,17 +46,36 @@
   }
 
   /* HEADER */
+  .header-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 56px 14px;
+    padding: 16px 56px 14px 20px;
     border-bottom: 1px solid var(--border);
+  }
+
+  .logo-credit {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.68rem;
+    color: var(--sub);
+    letter-spacing: 0.3px;
+    padding: 4px 56px 4px 20px;
+  }
+
+  .logo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .logo {
     font-family: 'Black Han Sans', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     letter-spacing: -1px;
   }
   .logo span { color: var(--accent); }
@@ -335,6 +354,7 @@
   /* ── TABLET ── */
   @media (max-width: 1024px) {
     header { padding: 14px 32px 12px; }
+    .logo-credit { padding: 4px 32px 4px; }
     .breadcrumb-bar { min-width: 160px; }
     main { padding: 0 32px; }
     .cards-4 { max-width: 680px; gap: 14px; }
@@ -352,9 +372,10 @@
   /* ── MOBILE ── */
   @media (max-width: 767px) {
     header { padding: 12px 20px 10px; }
+    .logo-credit { padding: 4px 20px 4px; }
     .progress-track { display: none; }
     .breadcrumb-bar { min-width: unset; }
-    .logo { font-size: 1.2rem; }
+    .logo { font-size: 1.5rem; }
     main { padding: 0 16px; }
     .step-question { font-size: 1.4rem; margin-bottom: 20px; }
     .cards-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 100%; }
@@ -384,8 +405,11 @@
 <body>
 <div class="app">
 
+  <div class="header-wrap">
   <header>
-    <div class="logo">오늘 <span>뭐</span> 시킬까?</div>
+    <div class="logo-wrap">
+      <div class="logo">오늘 <span>뭐</span> 시킬까?</div>
+    </div>
     <div class="progress-track">
       <div class="prog-step active" id="prog1"><span class="num">1</span> 종류 선택</div>
       <div class="prog-divider"></div>
@@ -395,12 +419,14 @@
     </div>
     <div class="breadcrumb-bar" id="breadcrumb"></div>
   </header>
+  <div class="logo-credit">j_ihooony</div>
+  </div>
 
   <main>
 
     <!-- STEP 1 -->
     <div class="step step-center active" id="step1">
-      <div class="step-question">어떤 종류가 <span class="accent">땡기세요?</span></div>
+      <div class="step-question">종류를 <span class="accent">선택해주세요</span></div>
       <div class="cards-4">
         <div class="card" onclick="selectCuisine('한식','🍚')">
           <div class="card-emoji">🍚</div>
@@ -450,7 +476,7 @@
           <button class="spin-btn" id="spinBtn" onclick="spinRoulette()">룰렛 돌리기</button>
           <div class="action-row" id="actionRow" style="display:none;">
             <button class="restart-btn" onclick="goBack(2)">← 뒤로</button>
-            <button class="restart-btn" onclick="restart()">처음부터</button>
+            <button class="restart-btn" onclick="restart()">↩ 처음부터</button>
           </div>
           <div class="action-row" id="backRow">
             <button class="restart-btn" onclick="goBack(2)">← 뒤로</button>
@@ -461,6 +487,7 @@
     </div>
 
   </main>
+
 </div>
 
 <div class="modal-overlay" id="modalOverlay">
@@ -697,7 +724,7 @@ function showResult(angle) {
 
 function goBack(toStep) {
   hideModal();
-  if (spinning) return; // 돌아가는 중엔 뒤로가기 막기
+  if (spinning) return;
   spinning = false;
 
   document.getElementById('step1').classList.remove('active');
